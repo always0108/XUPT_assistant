@@ -1,4 +1,4 @@
-package TTMS_Server.config.spring;
+package XUPT_assistant.config.spring;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

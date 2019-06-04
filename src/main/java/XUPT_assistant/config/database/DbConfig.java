@@ -1,4 +1,4 @@
-package TTMS_Server.config.database;
+package XUPT_assistant.config.database;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;

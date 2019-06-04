@@ -1,4 +1,4 @@
-package TTMS_Server.config.database;
+package XUPT_assistant.config.database;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -23,7 +23,7 @@ public class MyBatis {
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer(SqlSessionFactoryBean sfb){
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("TTMS_Server.dao");
+        mapperScannerConfigurer.setBasePackage("XUPT_assistant.dao");
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sfb");
         return mapperScannerConfigurer;
     }
