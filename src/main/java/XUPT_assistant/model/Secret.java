@@ -1,7 +1,10 @@
 package XUPT_assistant.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Component
 public class Secret {
     private Integer id;
 
