@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 <html>
 <head>
   <title>主页</title>
@@ -76,3 +77,8 @@
 
 </body>
 </html>
+=======
+<%
+  response.sendRedirect("/system/login");
+%>
+>>>>>>> 87671c7b27973b20621736ad4cecec781c0078cb
