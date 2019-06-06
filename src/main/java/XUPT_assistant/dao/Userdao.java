@@ -1,4 +1,10 @@
 package XUPT_assistant.dao;
 
-public class Userdao {
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
+public interface Userdao {
+
 }

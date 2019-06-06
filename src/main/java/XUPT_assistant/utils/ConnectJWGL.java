@@ -1,5 +1,6 @@
 package XUPT_assistant.utils;
 
+import XUPT_assistant.model.Student;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -80,7 +81,6 @@ public class ConnectJWGL {
         response = connection.execute();
         document = Jsoup.parse(response.body());
         if(document.getElementById("tips") == null){
-            System.out.println("欢迎登陆");
             return true;
         }else{
             System.out.println(document.getElementById("tips").text());
@@ -89,22 +89,23 @@ public class ConnectJWGL {
     }
 
     // 查询学生信息
-    public void getStudentInformaction() throws Exception {
+    public Student getStudentInformaction() throws Exception {
         connection = Jsoup.connect(url+ "/jwglxt/xsxxxggl/xsxxwh_cxCkDgxsxx.html?gnmkdm=N100801&su="+ stuNum);
         connection.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0");
         response = connection.cookies(cookies).ignoreContentType(true).execute();
         JSONObject jsonObject = JSON.parseObject(response.body());
-        System.out.println("--- 基本信息 ---");
-        System.out.println("学号：" + jsonObject.getString("xh_id"));
-        System.out.println("性别：" + jsonObject.getString("xbm"));
-        System.out.println("民族：" + jsonObject.getString("mzm"));
-        System.out.println("学院：" + jsonObject.getString("jg_id"));
-        System.out.println("班级：" + jsonObject.getString("bh_id"));
-        System.out.println("专业：" + jsonObject.getString("zszyh_id"));
-        System.out.println("状态：" + jsonObject.getString("xjztdm"));
-        System.out.println("入学年份：" + jsonObject.getString("njdm_id"));
-        System.out.println("证件号码：" + jsonObject.getString("zjhm"));
-        System.out.println("政治面貌：" + jsonObject.getString("zzmmm"));
+        Student student = new Student();
+        student.setName(jsonObject.getString("xm"));
+        student.setNumber(jsonObject.getString("xh_id"));
+        student.setSex(jsonObject.getString("xbm"));
+        student.setNation(jsonObject.getString("mzm"));
+        student.setCollege(jsonObject.getString("jg_id"));
+        student.setSpecialty(jsonObject.getString("zszyh_id"));
+        student.setClazz(jsonObject.getString("bh_id"));
+        student.setEntrollment_year(Integer.parseInt(jsonObject.getString("njdm_id")));
+        student.setId_number(jsonObject.getString("zjhm"));
+        student.setPolitics_status(jsonObject.getString("zzmmm"));
+        return student;
     }
 
     // 获取课表信息

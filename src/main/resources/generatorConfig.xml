@@ -17,7 +17,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/TTMS?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/XiyouAssistant?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
                         userId="root"
                         password="lm19980108">
         </jdbcConnection>
@@ -31,51 +31,49 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-
-        <!--<sqlMapGenerator targetPackage="TTMS_Server.dao" targetProject="/home/limeng/git/TTMS_Javaversion_group1/TTMS_Java/TTMS_Server/src/main/java">-->
-            <!--<property name="enableSubPackages" value="true"/>-->
-        <!--</sqlMapGenerator>-->
-
-        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="TTMS_Server.dao" targetProject="/home/limeng/git/TTMS_Javaversion_group1/TTMS_Java/TTMS_Server/src/main/java">-->
-            <!--<property name="enableSubPackages" value="true"/>-->
-        <!--</javaClientGenerator>-->
-
         <!--&lt;!&ndash; 指定数据库表 &ndash;&gt;-->
-        <table schema="general" tableName="user" domainObjectName="User"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
+
+        <table schema="general" tableName="student" domainObjectName="Student"
+        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        enableSelectByExample="false" selectByExampleQueryId="false" >
+        <property name="useActualColumnNames" value="true"/>
         </table>
 
-        <table schema="general" tableName="found" domainObjectName="Found"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+        <!--<table schema="general" tableName="user" domainObjectName="User"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
 
-        <table schema="general" tableName="lost" domainObjectName="Lost"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+        <!--<table schema="general" tableName="found" domainObjectName="Found"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
 
-        <table schema="general" tableName="picture" domainObjectName="Picture"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+        <!--<table schema="general" tableName="lost" domainObjectName="Lost"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
 
-        <table schema="general" tableName="secret" domainObjectName="Secret"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+        <!--<table schema="general" tableName="picture" domainObjectName="Picture"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
 
-        <table schema="general" tableName="transaction" domainObjectName="Transaction"
-               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false" >
-            <property name="useActualColumnNames" value="true"/>
-        </table>
+        <!--<table schema="general" tableName="secret" domainObjectName="Secret"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+
+        <!--<table schema="general" tableName="transaction" domainObjectName="Transaction"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
 
     </context>
 

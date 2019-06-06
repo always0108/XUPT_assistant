@@ -10,8 +10,7 @@ public class Main {
 //        String stuNum = input.next();
 //        System.out.print("请输入密码:");
 //        String password = input.next();
-//        ConnectJWGL connectJWGL = new ConnectJWGL(stuNum,password);
-//        connectJWGL.init();
+//        
 //        if(connectJWGL.beginLogin()){
 //            connectJWGL.getStudentInformaction();
 //            System.out.println("---查询课表---");
