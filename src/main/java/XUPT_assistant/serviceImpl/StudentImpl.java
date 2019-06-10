@@ -11,9 +11,9 @@ public class StudentImpl implements StudentService {
     @Autowired
     private StudentDao studentDao;
 
-    //根据id获取学生信息
-    public Student selectStudentById(Integer id){
-        return studentDao.selectStudentById(id);
+    //根据user_id获取学生信息
+    public Student selectStudentUserById(Integer user_id){
+        return studentDao.selectStudentByUserId(user_id);
     }
 
     //根据学号获取学生信息

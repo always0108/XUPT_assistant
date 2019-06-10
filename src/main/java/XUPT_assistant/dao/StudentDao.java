@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface StudentDao {
-    //根据id获取学生信息
-    @Select("select * from student where id = #{id}")
-    Student selectStudentById(Integer id);
+    //根据user_id获取学生信息
+    @Select("select * from student where user_id = #{user_id}")
+    Student selectStudentByUserId(Integer user_id);
 
     //根据学号获取学生信息
     @Select("select * from student where number = #{number}")
