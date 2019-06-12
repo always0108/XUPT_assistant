@@ -53,4 +53,9 @@ public class TransactionController {
     public List<Transaction> getMyTransaction(int user_id){
       return transactionService.getMyTransaction(user_id);
     }
+
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    public String get(){
+        return "transaction";
+    }
 }

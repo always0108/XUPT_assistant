@@ -1,11 +1,13 @@
 package XUPT_assistant.web;
 
 import XUPT_assistant.dao.StudentDao;
+import XUPT_assistant.dao.UserDao;
 import XUPT_assistant.model.Course;
 import XUPT_assistant.model.Grade;
 import XUPT_assistant.model.Student;
 import XUPT_assistant.model.User;
 import XUPT_assistant.service.StudentService;
+import XUPT_assistant.service.UserService;
 import XUPT_assistant.utils.ConnectJWGL;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
@@ -24,13 +27,15 @@ import java.util.List;
 @Controller
 public class StudentController {
     @Autowired
-    private StudentDao studentDao;
+    private StudentService studentService;
+    @Autowired
+    private UserService userService;
 
-    @ResponseBody
     @RequestMapping(value = "/student/bind",method = RequestMethod.POST)
     public String studentBind(@RequestParam("number") String number,
                               @RequestParam("password") String password,
-                              HttpServletRequest request)
+                              HttpServletRequest request,
+                              HttpServletResponse response)
             throws IOException {
         User user = (User)request.getSession().getAttribute("user");
         Student student;
@@ -41,30 +46,41 @@ public class StudentController {
                 student = connectJWGL.getStudentInformaction();
                 student.setPassword(password);
                 student.setUser_id(user.getId());
-                studentDao.addStudent(student);
+                studentService.addStudent(student);
                 connectJWGL.logout();
             }else {
-                return "fail";
+                return "bind";
             }
         }catch (Exception e){
             e.printStackTrace();
-            return "fail";
+            return "bind";
         }
-        return "success";
+        user.setBind(1);
+        userService.updateBindStatus(user.getId(),1);
+        request.getSession().setAttribute("user",user);
+        return "home";
     }
 
     @RequestMapping(value = "/student/bind",method = RequestMethod.GET)
-    public String bind(Model model){
+    public String bind(){
         return "bind";
     }
 
     @RequestMapping(value = "/student/courseSearch",method = RequestMethod.GET)
-    public String getCourseSearch(Model model){
+    public String getCourseSearch(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        if(user.getBind() == 0){
+            return "/bind";
+        }
         return "courseSearch";
     }
 
     @RequestMapping(value = "/student/gradeSearch",method = RequestMethod.GET)
-    public String gradeSearch(){
+    public String gradeSearch(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        if(user.getBind() == 0){
+            return "/bind";
+        }
         return "gradeSearch";
     }
 
@@ -79,7 +95,7 @@ public class StudentController {
                                HttpServletRequest request,
                                Model model){
         User user = (User)request.getSession().getAttribute("user");
-        Student student = studentDao.selectStudentByUserId(user.getId());
+        Student student = studentService.selectStudentByUserId(user.getId());
         try {
             ConnectJWGL connectJWGL = new ConnectJWGL(student.getNumber(),student.getPassword());
             connectJWGL.init();
@@ -103,7 +119,7 @@ public class StudentController {
                                HttpServletRequest request,
                                Model model){
         User user = (User)request.getSession().getAttribute("user");
-        Student student = studentDao.selectStudentByUserId(user.getId());
+        Student student = studentService.selectStudentByUserId(user.getId());
         try {
             ConnectJWGL connectJWGL = new ConnectJWGL(student.getNumber(),student.getPassword());
             connectJWGL.init();

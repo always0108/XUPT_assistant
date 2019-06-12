@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService {
         userDao.updatePassword(id,newPassword);
         return true;
     }
+
+    @Override
+    public boolean updateBindStatus(int id,Integer bind){
+        userDao.updateBindStatus(id,bind);
+        return true;
+    }
 }
