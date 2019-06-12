@@ -15,6 +15,8 @@ public class User {
 
     private String intro;
 
+    private int bind;
+
     public Integer getId() {
         return id;
     }
@@ -69,5 +71,13 @@ public class User {
 
     public void setIntro(String intro) {
         this.intro = intro == null ? null : intro.trim();
+    }
+
+    public int getBind() {
+        return bind;
+    }
+
+    public void setBind(int bind) {
+        this.bind = bind;
     }
 }

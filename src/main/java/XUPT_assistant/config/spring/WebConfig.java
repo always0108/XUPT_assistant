@@ -1,5 +1,6 @@
 package XUPT_assistant.config.spring;
 
+import XUPT_assistant.interceptor.LoginInterceptor;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
@@ -11,6 +12,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -44,6 +46,16 @@ public class WebConfig extends WebMvcConfigurationSupport {
         fastConverter.setSupportedMediaTypes(fastMediaTypes);
         fastConverter.setFastJsonConfig(fastJsonConfig);
         converters.add(fastConverter);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/system/login")
+                .excludePathPatterns("/system/loginAct")
+                .excludePathPatterns("/system/get_cpacha")
+                .excludePathPatterns("/system/register");
     }
 
     //配置对静态资源的处理

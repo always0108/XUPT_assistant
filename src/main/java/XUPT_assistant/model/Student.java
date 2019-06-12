@@ -15,13 +15,13 @@ public class Student {
 
     private String password;
 
-    private String college;
+    private String college;//学院
 
-    private String specialty;
+    private String specialty;//专业
 
-    private String clazz;
+    private String clazz;//班级
 
-    private Integer entrollment_year;
+    private Integer entrollment_year;//入学年份
 
     private String id_number;
 
