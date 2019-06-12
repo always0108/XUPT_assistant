@@ -27,10 +27,9 @@ public class LikeServiceImpl implements LikeService {
 
     @Override
     public boolean isExist(int user_id, int secret_id) {
-        if(likeDao.isExist(user_id,secret_id)){
-            return true;
-        }else {
+        if(likeDao.getLike(user_id,secret_id) == null){
             return false;
         }
+        return true;
     }
 }

@@ -1,15 +1,14 @@
 package XUPT_assistant.web;
 
 
-import XUPT_assistant.model.Student;
 import XUPT_assistant.model.User;
 import XUPT_assistant.service.TransactionService;
 import XUPT_assistant.service.UserService;
 import XUPT_assistant.utils.CpachaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -30,13 +29,19 @@ public class SystemController {
     private TransactionService transactionService;
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(){
+    public String login(HttpServletRequest request){
+        request.getSession().invalidate();
         return "login";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(){
         return "register";
+    }
+
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.GET)
+    public String updatePassword(){
+        return "updatePassword";
     }
 
     @RequestMapping(value = "/home",method = RequestMethod.GET)
@@ -155,28 +160,36 @@ public class SystemController {
     }
 
     @RequestMapping(value = "/transaction",method = RequestMethod.GET)
-    public String personal(ModelAndView modelAndView){
-        modelAndView.addObject("transactions",transactionService.getAllTransaction());
+    public String personal(Model model){
+        model.addAttribute("transactions",transactionService.getAllTransaction());
         return "transaction";
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.GET)
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
-    public String updateUser(User user){
+    public String updateUser(User user,HttpServletRequest request){
+        User user1 = (User)request.getSession().getAttribute("user");
+        user.setId(user1.getId());
+        user.setBind(user1.getBind());
         if(userService.updateUser(user)){
-            return "修改成功";
+            request.getSession().setAttribute("user",user);
+            return "success";
         }else {
-            return "修改失败";
+            return "fail";
         }
     }
 
-    @RequestMapping(value = "/updatePassword",method = RequestMethod.GET)
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
     @ResponseBody
-    public String updatePassword(String password,String newPassword,HttpServletRequest request) {
+    public String updatePassword(String password,String newPassword,String newRePassword,HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (!user.getPassword().equals(password)) {
             return "原密码错误";
         }
+        if(!newPassword.equals(newRePassword)){
+            return "俩次密码不一致";
+        }
+
         if (userService.updatePassword(user.getId(), newPassword)) {
             return "修改成功";
         } else {
