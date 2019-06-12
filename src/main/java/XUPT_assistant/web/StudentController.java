@@ -27,7 +27,7 @@ public class StudentController {
     private StudentDao studentDao;
 
     @ResponseBody
-    @RequestMapping(value = "/student/bind",method = RequestMethod.GET)
+    @RequestMapping(value = "/student/bind",method = RequestMethod.POST)
     public String studentBind(@RequestParam("number") String number,
                               @RequestParam("password") String password,
                               HttpServletRequest request)

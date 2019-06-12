@@ -17,7 +17,7 @@
 
     <div class="container main">
         <div class="col-lg-6 col-xs-12 col-lg-offset-3">
-            <form>
+            <form action="/system/update">
                 <div class="form-group">
                     <label>姓名</label>
                     <input type="text" class="form-control" name="name" placeholder="姓名">

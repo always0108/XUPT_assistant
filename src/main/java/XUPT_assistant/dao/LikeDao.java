@@ -19,6 +19,6 @@ public interface LikeDao {
     int getCount(int secret_id);
 
     @Select("select * from like where user_id = #{user_id} and secret_id = #{secret_id}")
-    void isExist(@Param("user_id") int user_id,@Param("secret_id") int secret_id);
+    boolean isExist(@Param("user_id") int user_id,@Param("secret_id") int secret_id);
 
 }
