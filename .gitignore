@@ -2,9 +2,9 @@
 *.config
 *.iml
 *.properties
+*.jar
 
 #过滤文件夹  
 out/
 target/
 .idea/ 
-lib/

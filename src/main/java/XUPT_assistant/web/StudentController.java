@@ -52,6 +52,11 @@ public class StudentController {
         return "success";
     }
 
+    @RequestMapping(value = "/student/bind",method = RequestMethod.GET)
+    public String bind(Model model){
+        return "bind";
+    }
+
     @RequestMapping(value = "/student/courseSearch",method = RequestMethod.GET)
     public String getCourseSearch(Model model){
         return "courseSearch";
@@ -60,6 +65,11 @@ public class StudentController {
     @RequestMapping(value = "/student/gradeSearch",method = RequestMethod.GET)
     public String gradeSearch(){
         return "gradeSearch";
+    }
+
+    @RequestMapping(value = "/system/modifyInfo",method = RequestMethod.GET)
+    public String modifyInfo(){
+        return "modifyIntro";
     }
 
     @RequestMapping(value = "/student/courseSearch",method = RequestMethod.POST)
