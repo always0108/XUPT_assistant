@@ -5,6 +5,7 @@ import XUPT_assistant.model.Course;
 import XUPT_assistant.model.Grade;
 import XUPT_assistant.model.Student;
 import XUPT_assistant.model.User;
+import XUPT_assistant.service.StudentService;
 import XUPT_assistant.utils.ConnectJWGL;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,9 +4,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@Component
 public class Secret {
     private Integer id;
+
+    private int user_id;
 
     private String username;
 
@@ -20,6 +21,14 @@ public class Secret {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getUsername() {

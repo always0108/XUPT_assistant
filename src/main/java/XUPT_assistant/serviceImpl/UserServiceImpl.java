@@ -21,4 +21,16 @@ public class UserServiceImpl implements UserService {
         userDao.addUser(user);
         return true;
     }
+
+    @Override
+    public boolean updateUser(User user){
+        userDao.updateUser(user);
+        return true;
+    }
+
+    @Override
+    public boolean updatePassword(int id,String newPassword){
+        userDao.updatePassword(id,newPassword);
+        return true;
+    }
 }

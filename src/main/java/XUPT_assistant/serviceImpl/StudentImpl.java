@@ -16,6 +16,11 @@ public class StudentImpl implements StudentService {
         return studentDao.selectStudentByUserId(user_id);
     }
 
+    @Override
+    public Student selectStudentByUserId(Integer user_id) {
+        return studentDao.selectStudentByUserId(user_id);
+    }
+
     //根据学号获取学生信息
     public Student selectStudentBySchoolNumber(String number){
         return studentDao.selectStudentBySchoolNumber(number);
@@ -30,4 +35,6 @@ public class StudentImpl implements StudentService {
     public void deleteStudentById(Integer id){
         studentDao.deleteStudentById(id);
     }
+
+
 }

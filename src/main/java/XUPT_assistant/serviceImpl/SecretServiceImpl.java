@@ -37,7 +37,7 @@ public class SecretServiceImpl implements SecretService {
 
     @Override
     public boolean updateSecretContent(String content,int id){
-        secretDao.uodateSecretContent(content,id);
+        secretDao.updateSecretContent(content,id);
         return true;
     }
 }

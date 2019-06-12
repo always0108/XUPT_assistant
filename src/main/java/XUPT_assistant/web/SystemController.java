@@ -1,12 +1,15 @@
 package XUPT_assistant.web;
 
 
+import XUPT_assistant.model.Student;
 import XUPT_assistant.model.User;
+import XUPT_assistant.service.TransactionService;
 import XUPT_assistant.service.UserService;
 import XUPT_assistant.utils.CpachaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +25,9 @@ public class SystemController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TransactionService transactionService;
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(){
@@ -84,7 +90,7 @@ public class SystemController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,String> register(User user, String repassword){
-        Map<String,String> map = new HashMap();
+        Map<String,String> map = new HashMap<>();
         if(user.getName().equals("")){
             map.put("type","error");
             map.put("msg","请填写用户名");
@@ -146,5 +152,35 @@ public class SystemController {
             return true;
         }
         return false;
+    }
+
+    @RequestMapping(value = "/transaction",method = RequestMethod.GET)
+    public String personal(ModelAndView modelAndView){
+        modelAndView.addObject("transactions",transactionService.getAllTransaction());
+        return "transaction";
+    }
+
+    @RequestMapping(value = "/update",method = RequestMethod.GET)
+    @ResponseBody
+    public String updateUser(User user){
+        if(userService.updateUser(user)){
+            return "修改成功";
+        }else {
+            return "修改失败";
+        }
+    }
+
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.GET)
+    @ResponseBody
+    public String updatePassword(String password,String newPassword,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (!user.getPassword().equals(password)) {
+            return "原密码错误";
+        }
+        if (userService.updatePassword(user.getId(), newPassword)) {
+            return "修改成功";
+        } else {
+            return "修改失败";
+        }
     }
 }

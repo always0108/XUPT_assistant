@@ -23,4 +23,5 @@ public interface StudentDao {
     //删除学生
     @Delete("delete from student where id = #{id}")
     void deleteStudentById(Integer id);
+
 }

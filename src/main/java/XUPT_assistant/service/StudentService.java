@@ -6,6 +6,9 @@ public interface StudentService {
     //根据user_id获取学生信息
     Student selectStudentUserById(Integer user_id);
 
+    //根据id获取学生信息
+    Student selectStudentByUserId(Integer user_id);
+
     //根据学号获取学生信息
     Student selectStudentBySchoolNumber(String number);
 
@@ -14,4 +17,5 @@ public interface StudentService {
 
     //删除学生
     void deleteStudentById(Integer id);
+
 }

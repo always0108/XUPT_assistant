@@ -1,7 +1,10 @@
 package XUPT_assistant.model;
 
+
 public class Transaction {
     private Integer id;
+
+    private int user_id;
 
     private String name;
 
@@ -21,6 +24,14 @@ public class Transaction {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getName() {
@@ -70,4 +81,6 @@ public class Transaction {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+
 }
