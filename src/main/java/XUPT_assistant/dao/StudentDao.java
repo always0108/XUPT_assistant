@@ -7,10 +7,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface StudentDao {
-    //根据id获取学生信息
-    @Select("select * from student where id = #{id}")
-    Student selectStudentById(Integer id);
-
     //根据user_id获取学生信息
     @Select("select * from student where user_id = #{user_id}")
     Student selectStudentByUserId(Integer user_id);
@@ -28,7 +24,4 @@ public interface StudentDao {
     @Delete("delete from student where id = #{id}")
     void deleteStudentById(Integer id);
 
-    //修改密码
-    @Update("update student set password = #{newPassword} where id = #{id}")
-    void updatePassword(@Param("id") int id,@Param("newPassword") String newPassword);
 }

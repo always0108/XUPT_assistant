@@ -1,5 +1,7 @@
 package XUPT_assistant.utils;
 
+import XUPT_assistant.model.Course;
+import XUPT_assistant.model.Grade;
 import XUPT_assistant.model.Student;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -8,10 +10,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class ConnectJWGL {
 
@@ -109,7 +108,7 @@ public class ConnectJWGL {
     }
 
     // 获取课表信息
-    public void getStudentTimetable(int year , int term) throws Exception {
+    public List<Course> getStudentTimetable(int year , int term) throws Exception {
         connection = Jsoup.connect(url+ "/jwglxt/kbcx/xskbcx_cxXsKb.html?gnmkdm=N2151");
         connection.header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20100101 Firefox/29.0");
         connection.data("xnm",String.valueOf(year));
@@ -117,25 +116,28 @@ public class ConnectJWGL {
         response = connection.cookies(cookies).method(Connection.Method.POST).ignoreContentType(true).execute();
         JSONObject jsonObject = JSON.parseObject(response.body());
         if(jsonObject.get("kbList") == null){
-            System.out.println("暂时没有安排课程");
-            return;
+            return null;
         }
         JSONArray timeTable = JSON.parseArray(jsonObject.getString("kbList"));
-        System.out.println(String.valueOf(year) + " -- " + String.valueOf(year + 1) + "学年 " + "第" + term + "学期");
+        List<Course> courses = new ArrayList<>();
         for (Iterator iterator = timeTable.iterator(); iterator.hasNext();) {
             JSONObject lesson = (JSONObject) iterator.next();
-            System.out.println(lesson.getString("xqjmc") + " " +
-                    lesson.getString("jc") + " " +
-                    lesson.getString("kcmc") + " " +
-                    lesson.getString("xm") + " " +
-                    lesson.getString("xqmc") + " " +
-                    lesson.getString("cdmc") + " " +
-                    lesson.getString("zcd"));
+            Course course = new Course();
+            course.setCourseName(lesson.getString("kcmc"));
+            course.setTeacher(lesson.getString("xm"));
+            course.setExam_style(lesson.getString("khfsmc"));
+            course.setPeriod(lesson.getString("zcd"));
+            course.setDay_of_week(lesson.getString("xqjmc"));
+            course.setJc(lesson.getString("jc"));
+            course.setCampus(lesson.getString("xqmc"));
+            course.setClassroom(lesson.getString("cdmc"));
+            courses.add(course);
         }
+        return courses;
     }
 
     // 获取成绩信息
-    public void getStudentGrade(int year , int term) throws Exception {
+    public List<Grade> getStudentGrade(int year , int term) throws Exception {
         Map<String,String> datas = new HashMap<>();
         datas.put("xnm",String.valueOf(year));
         datas.put("xqm",String.valueOf(term * term * 3));
@@ -157,14 +159,24 @@ public class ConnectJWGL {
         response = connection.cookies(cookies).method(Connection.Method.POST)
                 .data(datas).ignoreContentType(true).execute();
         JSONObject jsonObject = JSON.parseObject(response.body());
+        if(jsonObject.get("items") == null){
+            return null;
+        }
         JSONArray gradeTable = JSON.parseArray(jsonObject.getString("items"));
+        List<Grade> grades = new ArrayList<>();
         for (Iterator iterator = gradeTable.iterator(); iterator.hasNext();) {
             JSONObject lesson = (JSONObject) iterator.next();
-            System.out.println(lesson.getString("kcmc") + " " +
-                    lesson.getString("jsxm") + " " +
-                    lesson.getString("bfzcj") + " " +
-                    lesson.getString("jd"));
+            Grade grade = new Grade();
+            grade.setCourseName(lesson.getString("kcmc"));
+            grade.setCredit(lesson.getString("xf"));
+            grade.setType(lesson.getString("kcxzmc"));
+            grade.setExam_style(lesson.getString("ksxz"));
+            grade.setTeacher(lesson.getString("jsxm"));
+            grade.setScores(lesson.getString("cj"));
+            grade.setGPA(lesson.getString("jd"));
+            grades.add(grade);
         }
+        return grades;
     }
 
     public void logout() throws Exception {

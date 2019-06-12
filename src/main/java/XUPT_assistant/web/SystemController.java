@@ -1,6 +1,7 @@
 package XUPT_assistant.web;
 
 
+import XUPT_assistant.model.Student;
 import XUPT_assistant.model.User;
 import XUPT_assistant.service.TransactionService;
 import XUPT_assistant.service.UserService;
@@ -165,6 +166,20 @@ public class SystemController {
         if(userService.updateUser(user)){
             return "修改成功";
         }else {
+            return "修改失败";
+        }
+    }
+
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.GET)
+    @ResponseBody
+    public String updatePassword(String password,String newPassword,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (!user.getPassword().equals(password)) {
+            return "原密码错误";
+        }
+        if (userService.updatePassword(user.getId(), newPassword)) {
+            return "修改成功";
+        } else {
             return "修改失败";
         }
     }

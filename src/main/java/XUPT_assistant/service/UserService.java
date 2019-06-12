@@ -8,4 +8,5 @@ public interface UserService {
     User findByUserName(String username);
     boolean addUser(User user);
     boolean updateUser(User user);
+    boolean updatePassword(int id,String newPassword);
 }

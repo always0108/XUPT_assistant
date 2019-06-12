@@ -11,9 +11,9 @@ public class StudentImpl implements StudentService {
     @Autowired
     private StudentDao studentDao;
 
-    //根据id获取学生信息
-    public Student selectStudentById(Integer id){
-        return studentDao.selectStudentById(id);
+    //根据user_id获取学生信息
+    public Student selectStudentUserById(Integer user_id){
+        return studentDao.selectStudentByUserId(user_id);
     }
 
     @Override
@@ -36,8 +36,5 @@ public class StudentImpl implements StudentService {
         studentDao.deleteStudentById(id);
     }
 
-    public boolean updatePassword(int id,String newPassword){
-        studentDao.updatePassword(id,newPassword);
-        return true;
-    }
+
 }

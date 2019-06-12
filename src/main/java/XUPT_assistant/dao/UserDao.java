@@ -17,4 +17,8 @@ public interface UserDao {
     @Update("update user set name = #{name},sex = #{sex} , " +
             "phone = #{phone} , intro = #{intro} where id = #{id}")
     void updateUser(User user);
+
+    //修改密码
+    @Update("update user set password = #{newPassword} where id = #{id}")
+    void updatePassword(@Param("id") int id,@Param("newPassword") String newPassword);
 }

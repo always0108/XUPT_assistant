@@ -3,8 +3,8 @@ package XUPT_assistant.service;
 import XUPT_assistant.model.Student;
 
 public interface StudentService {
-    //根据id获取学生信息
-    Student selectStudentById(Integer id);
+    //根据user_id获取学生信息
+    Student selectStudentUserById(Integer user_id);
 
     //根据id获取学生信息
     Student selectStudentByUserId(Integer user_id);
@@ -18,5 +18,4 @@ public interface StudentService {
     //删除学生
     void deleteStudentById(Integer id);
 
-    boolean updatePassword(int id,String newPassword);
 }

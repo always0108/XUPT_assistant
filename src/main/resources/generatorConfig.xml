@@ -17,7 +17,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/XiyouAssistant?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/SHC?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
                         userId="root"
                         password="lm19980108">
         </jdbcConnection>
@@ -32,12 +32,17 @@
         </javaModelGenerator>
 
         <!--&lt;!&ndash; 指定数据库表 &ndash;&gt;-->
-
-        <table schema="general" tableName="student" domainObjectName="Student"
-        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-        enableSelectByExample="false" selectByExampleQueryId="false" >
-        <property name="useActualColumnNames" value="true"/>
+        <table schema="general" tableName="SHC.sale" domainObjectName="Sale"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="true"/>
         </table>
+
+        <!--<table schema="general" tableName="student" domainObjectName="Student"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+        <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
 
         <!--<table schema="general" tableName="user" domainObjectName="User"-->
                <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
