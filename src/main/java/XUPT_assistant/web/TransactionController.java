@@ -50,7 +50,8 @@ public class TransactionController {
 
     @RequestMapping(value = "/getMy",method = RequestMethod.GET)
     @ResponseBody
-    public List<Transaction> getMyTransaction(int user_id){
-      return transactionService.getMyTransaction(user_id);
+    public List<Transaction> getMyTransaction(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        return transactionService.getMyTransaction(user.getId());
     }
 }

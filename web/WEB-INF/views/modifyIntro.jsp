@@ -13,19 +13,58 @@
 </head>
 <body>
 
+    <%@include file="public/js.jsp"%>
+
     <%@include file="public/head.jsp"%>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#button").click(function () {
+                var name = $("#name").val();
+                var sex = $("#sex").val();
+                var phone = $("#phone").val();
+                var intro = $("#intro").val();
+                $.ajax({
+                    url:"/system/update",
+                    data:{name:name,sex:sex,phone:phone,intro:intro},
+                    type:"post",
+                    dataType:"json",
+                    success:function (data) {
+                        if(data == "success"){
+                            Swal.fire({
+                                type: 'success',
+                                title: "修改成功",
+                                width:300
+                            })
+                            setTimeout(function(){
+                                $(window).attr({
+                                    'location': "home"
+                                })
+                            }, 1000);
+                        }else {
+                            Swal.fire({
+                                type: 'error',
+                                title: "修改失败",
+                                width:300
+                            })
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 
     <div class="container main">
         <div class="col-lg-6 col-xs-12 col-lg-offset-3">
-            <form action="/system/update">
+            <form>
                 <div class="form-group">
                     <label>姓名</label>
-                    <input type="text" class="form-control" name="name" placeholder="姓名">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
                 </div>
 
                 <div class="form-group">
                     <label>性别</label>
-                    <select class="form-control" name="sex">
+                    <select class="form-control" name="sex" id="sex">
                         <option value="0">请选择</option>
                         <option value="男">男</option>
                         <option value="女">女</option>
@@ -34,27 +73,28 @@
 
                 <div class="form-group">
                     <label>电话</label>
-                    <input type="text" class="form-control" name="phone" placeholder="电话">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="电话">
                 </div>
 
                 <div class="form-group">
                     <label>简介</label>
-                    <textarea class="form-control" rows="4" name="intro" placeholder="介绍一下你自己"></textarea>
+                    <textarea class="form-control" rows="4" name="intro" id="intro" placeholder="介绍一下你自己"></textarea>
                 </div>
 
                 <div class="form-group">
                     <br>
-                    <button type="submit" class="btn btn-primary form-control">确认</button>
+                    <button type="button" id="button" class="btn btn-primary form-control">确认</button>
                 </div>
 
             </form>
         </div>
     </div>
 
-        <%@include file="public/foot.jsp"%>
+    <%@include file="public/foot.jsp"%>
 
-        <%@include file="public/js.jsp"%>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
 </body>
 </html>

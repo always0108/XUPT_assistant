@@ -25,7 +25,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="/system/modifyInfo">修改个人信息</a>
-                            <li><a href="#">修改密码</a>
+                            <li><a href="/system/updatePassword">修改密码</a>
                             <li><a href="/student/bind">绑定学号</a>
                         </ul>
                     <li class="dropdown">
@@ -37,7 +37,7 @@
                             <li><a href="/student/gradeSearch">成绩查询</a>
 
                         </ul>
-                    <li><a href="#">跳蚤市场</a>
+                    <li><a href="/system/transaction">跳蚤市场</a>
                     <li><a href="#">失物招领</a>
                     <li><a href="#">校园说说</a>
                     <li><a href="#">关于我们</a>
