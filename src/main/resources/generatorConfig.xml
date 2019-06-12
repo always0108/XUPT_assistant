@@ -17,7 +17,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/SHC?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/XiyouAssistant?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
                         userId="root"
                         password="lm19980108">
         </jdbcConnection>
@@ -32,7 +32,7 @@
         </javaModelGenerator>
 
         <!--&lt;!&ndash; 指定数据库表 &ndash;&gt;-->
-        <table schema="general" tableName="SHC.sale" domainObjectName="Sale"
+        <table schema="general" tableName="likenum" domainObjectName="Likenum"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >
             <property name="useActualColumnNames" value="true"/>

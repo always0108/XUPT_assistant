@@ -54,4 +54,9 @@ public class TransactionController {
         User user = (User)request.getSession().getAttribute("user");
         return transactionService.getMyTransaction(user.getId());
     }
+
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    public String get(){
+        return "transaction";
+    }
 }

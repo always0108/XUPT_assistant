@@ -9,4 +9,5 @@ public interface UserService {
     boolean addUser(User user);
     boolean updateUser(User user);
     boolean updatePassword(int id,String newPassword);
+    boolean updateBindStatus(int id,Integer bind);
 }
