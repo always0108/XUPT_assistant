@@ -17,43 +17,6 @@
 
     <%@include file="public/head.jsp"%>
 
-    <script type="text/javascript">
-        $(function () {
-            $("#button").click(function () {
-                var name = $("#name").val();
-                var sex = $("#sex").val();
-                var phone = $("#phone").val();
-                var intro = $("#intro").val();
-                $.ajax({
-                    url:"/system/update",
-                    data:{name:name,sex:sex,phone:phone,intro:intro},
-                    type:"post",
-                    dataType:"json",
-                    success:function (data) {
-                        if(data == "success"){
-                            Swal.fire({
-                                type: 'success',
-                                title: "修改成功",
-                                width:300
-                            })
-                            setTimeout(function(){
-                                $(window).attr({
-                                    'location': "home"
-                                })
-                            }, 1000);
-                        }else {
-                            Swal.fire({
-                                type: 'error',
-                                title: "修改失败",
-                                width:300
-                            })
-                        }
-                    }
-                })
-            })
-        })
-    </script>
-
     <div class="container main">
         <div class="col-lg-6 col-xs-12 col-lg-offset-3">
             <form>
@@ -95,6 +58,43 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#button").click(function () {
+                var name = $("#name").val();
+                var sex = $("#sex").val();
+                var phone = $("#phone").val();
+                var intro = $("#intro").val();
+                $.ajax({
+                    url:"/system/update",
+                    data:{name:name,sex:sex,phone:phone,intro:intro},
+                    type:"post",
+                    dataType:"json",
+                    success:function (data) {
+                        if(data == "success"){
+                            Swal.fire({
+                                type: 'success',
+                                title: "修改成功",
+                                width:300
+                            })
+                            setTimeout(function(){
+                                $(window).attr({
+                                    'location': "home"
+                                })
+                            }, 1000);
+                        }else {
+                            Swal.fire({
+                                type: 'error',
+                                title: "修改失败",
+                                width:300
+                            })
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 
 </body>
 </html>

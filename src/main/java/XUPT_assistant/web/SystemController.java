@@ -49,6 +49,11 @@ public class SystemController {
         return "home";
     }
 
+    @RequestMapping(value = "/modifyInfo",method = RequestMethod.GET)
+    public String modifyInfo(){
+        return "modifyIntro";
+    }
+
     @RequestMapping(value = "/loginAct",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,String> loginAct(User user, String cpacha,HttpServletRequest request){
