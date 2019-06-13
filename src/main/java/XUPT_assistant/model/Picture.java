@@ -3,11 +3,17 @@ package XUPT_assistant.model;
 public class Picture {
     private Integer id;
 
-    private String type;
+    private String name;
 
-    private Integer number;
+    private Object image;
 
-    private String url;
+    public Picture() {
+    }
+
+    public Picture(String name, Object image) {
+        this.name = name;
+        this.image = image;
+    }
 
     public Integer getId() {
         return id;
@@ -17,27 +23,19 @@ public class Picture {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Object getImage() {
+        return image;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setImage(Object image) {
+        this.image = image;
     }
 }

@@ -13,6 +13,7 @@ public interface TransactionDao {
     @Insert("insert into transaction (name,user_id,price,information,seller," +
             "phone,status) values(#{name},#{user_id},#{price},#{information},#{seller}," +
             "#{phone},#{status})")
+    @Options(useGeneratedKeys=true, keyProperty="id", keyColumn="id")
     void addTransaction(Transaction transaction);
 
     //删除物品交易
