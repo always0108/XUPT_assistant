@@ -29,7 +29,6 @@
     <script src="../../resource/easyui/jquery.easyui.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
 <body style="height: 100%; background: #fff url(../../resource/images/1.jpg) 50% 50% no-repeat; background-size: cover;">

@@ -46,7 +46,14 @@
                             <li><a href="/system/MyTransaction">我的物品</a></li>
                         </ul>
                     <li><a href="#">失物招领</a>
-                    <li><a href="#">校园说说</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            校园说说 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/system/SchoolTalk">校园说说</a></li>
+                            <li><a href="/system/MyTalk">我的说说</a></li>
+                        </ul>
                     <li><a href="#">关于我们</a>
                     <%--<li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a><>--%>
                 </ul>

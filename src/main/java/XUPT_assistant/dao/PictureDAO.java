@@ -4,6 +4,8 @@ import XUPT_assistant.model.Picture;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface PictureDAO {
@@ -26,4 +28,9 @@ public interface PictureDAO {
     void updatePicture(@Param("target_id")Integer target_id ,
                        @Param("type")Integer type,
                        @Param("id") Integer id);
+
+    //根据交易id和type获取图片
+    @Select("select id from picture where target_id = #{target_id} and type = #{type}")
+    List<Integer> getPictureByTargetId(@Param("target_id")Integer target_id,
+                                            @Param("type")Integer type);
 }

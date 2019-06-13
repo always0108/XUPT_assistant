@@ -22,7 +22,7 @@ public class SecretController {
     @Autowired
     private SecretService secretService;
 
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     public String addSecret(Secret secret, HttpServletRequest request) throws ParseException {
         //获取当前时间
@@ -32,6 +32,7 @@ public class SecretController {
 
         User user = (User)request.getSession().getAttribute("user");
         secret.setUser_id(user.getId());
+        secret.setUsername(user.getName());
         if(secretService.addSecret(secret)){
             return "发表成功";
         }else{
@@ -56,7 +57,7 @@ public class SecretController {
         return list;
     }
 
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
     public String deleteSecretById(int id) {
         if(secretService.deleteSecretById(id)){
@@ -66,7 +67,7 @@ public class SecretController {
         }
     }
 
-    @RequestMapping(value = "/update",method = RequestMethod.GET)
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
     public String updateSecretContent(String content,int id){
         if(secretService.updateSecretContent(content,id)){

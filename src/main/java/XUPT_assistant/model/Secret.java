@@ -2,6 +2,7 @@ package XUPT_assistant.model;
 
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Secret {
@@ -14,6 +15,11 @@ public class Secret {
     private String content;
 
     private Date time;
+
+    private String display_time;
+
+    private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
     public Integer getId() {
         return id;
@@ -53,5 +59,13 @@ public class Secret {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public String getDisplay_time() {
+        return df.format(time);
+    }
+
+    public void setDisplay_time(String display_time) {
+        this.display_time = display_time;
     }
 }
