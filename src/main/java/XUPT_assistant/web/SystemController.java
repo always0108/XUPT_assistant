@@ -35,6 +35,11 @@ public class SystemController {
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(HttpServletRequest request){
+        return "login";
+    }
+
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String logout(HttpServletRequest request){
         request.getSession().invalidate();
         return "login";
     }
@@ -50,7 +55,8 @@ public class SystemController {
     }
 
     @RequestMapping(value = "/home",method = RequestMethod.GET)
-    public String home(){
+    public String home(HttpServletRequest request,Model model){
+        model.addAttribute("user",(User)request.getSession().getAttribute("user"));
         return "home";
     }
 
@@ -220,6 +226,7 @@ public class SystemController {
         }
 
         if (userService.updatePassword(user.getId(), newPassword)) {
+            request.getSession().invalidate();
             return "修改成功";
         } else {
             return "修改失败";

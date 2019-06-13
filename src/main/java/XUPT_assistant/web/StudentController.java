@@ -87,6 +87,8 @@ public class StudentController {
             model.addAttribute("status",0);
             return "bind";
         }
+        model.addAttribute("year",0);
+        model.addAttribute("semester",0);
         return "courseSearch";
     }
 
@@ -97,6 +99,8 @@ public class StudentController {
             model.addAttribute("status",0);
             return "bind";
         }
+        model.addAttribute("year",0);
+        model.addAttribute("semester",0);
         return "gradeSearch";
     }
 
@@ -123,6 +127,8 @@ public class StudentController {
             e.printStackTrace();
             model.addAttribute("notes","fail");
         }
+        model.addAttribute("year",year);
+        model.addAttribute("semester",semester);
         return "courseSearch";
     }
 
@@ -147,6 +153,8 @@ public class StudentController {
             e.printStackTrace();
             model.addAttribute("notes","fail");
         }
+        model.addAttribute("year",year);
+        model.addAttribute("semester",semester);
         return "gradeSearch";
     }
 }

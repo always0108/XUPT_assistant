@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: huxudong
@@ -7,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>校园说说</title>
+    <title>西邮管家 - 校园说说</title>
     <%@include file="public/resource.jsp"%>
 </head>
 <body>
@@ -104,21 +104,17 @@
 
 <%@include file="public/foot.jsp"%>
 <%@include file="public/js.jsp"%>
-<script src="../../resource/dropload.min.js"></script>
-<script src="../../resource/zepto.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <script>
     $(document).ready(function() {
         $('body').on("click",'.heart',function(){
-            var id = $(this).attr("talkID");
-            $.ajax({
-                url:"/like/addOrDelete",
-                data:{secret_id:id},
-                type:"post",
-                dataType:"json",
-                success:function (data) {
-                    if(data == "已点赞"){
+            // var id = $(this).attr("talkID");
+            // $.ajax({
+            //     url:"/like/addOrDelete",
+            //     data:{secret_id:id},
+            //     type:"post",
+            //     dataType:"json",
+            //     success:function (data) {
+            //         if(data == "已点赞"){
                         var A=$(this).attr("id");
                         var B=A.split("like");
                         var messageID=B[1];
@@ -135,21 +131,21 @@
                             $(this).css("background-position", "left");
                             //点击后强制使红心变黑，否则显示悬停状态的红色的心
                         }
-                    }else {
-                        if(D =='like') {
-                            $("#likeCount"+messageID).html(C+1);
-                            $(this).addClass("heartAnimation").attr("rel","unlike");
-                            $(this).css("background-position","right");
-                            //不加这句有bug，动画最后又会到了起点，点击后强制使图片停在最右边，
-                        }else {
-                            $("#likeCount" + messageID).html(C - 1);
-                            $(this).removeClass("heartAnimation").attr("rel", "like");
-                            $(this).css("background-position", "left");
-                            //点击后强制使红心变黑，否则显示悬停状态的红色的心
-                        }
-                    }
-                }
-            })
+                    // }else {
+                    //     if(D =='like') {
+                    //         $("#likeCount"+messageID).html(C+1);
+                    //         $(this).addClass("heartAnimation").attr("rel","unlike");
+                    //         $(this).css("background-position","right");
+                    //         //不加这句有bug，动画最后又会到了起点，点击后强制使图片停在最右边，
+                    //     }else {
+                    //         $("#likeCount" + messageID).html(C - 1);
+                    //         $(this).removeClass("heartAnimation").attr("rel", "like");
+                    //         $(this).css("background-position", "left");
+                    //         //点击后强制使红心变黑，否则显示悬停状态的红色的心
+                    //     }
+                    // }
+                // }
+        //     })
         });
     });
 </script>

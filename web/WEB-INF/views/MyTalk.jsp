@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: huxudong
@@ -6,20 +5,18 @@
   Time: 下午5:30
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>我的说说</title>
+    <title>西邮管家 - 我的说说</title>
     <%@include file="public/resource.jsp"%>
 </head>
 <body>
 <%@include file="public/head.jsp"%>
-<script src="../../resource/dropload.min.js"></script>
-<script src="../../resource/zepto.min.js"></script>
-<script src="/resource/lib/bootstrap/js/popper.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<script src="../../resource/js/dropload.min.js"></script>
+<script src="../../resource/js/zepto.min.js"></script>
+<script src="../../resource/lib/bootstrap/js/popper.js"></script>
 <div class="container main">
         <br>
         <div>
@@ -228,7 +225,6 @@
             })
         })
     })
-
 </script>
 </body>
 </html>

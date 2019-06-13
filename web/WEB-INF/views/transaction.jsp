@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: limeng
@@ -6,10 +5,11 @@
   Time: 上午9:22
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>跳蚤市场</title>
+    <title>西邮管家 - 跳蚤市场</title>
     <%@include file="public/resource.jsp"%>
 
 </head>
@@ -37,8 +37,8 @@
 
 <%@include file="public/foot.jsp"%>
 <%@include file="public/js.jsp"%>
-<script src="../../resource/dropload.min.js"></script>
-<script src="../../resource/zepto.min.js"></script>
+<script src="../../resource/js/dropload.min.js"></script>
+<script src="../../resource/js/zepto.min.js"></script>
 <script>
     $(function(){
         // 页数
@@ -64,7 +64,7 @@
                                     if(data[i].pics.length > 0){
                                         var imageurl = "/image/getImage?id="+data[i].pics[0];
                                     }else {
-                                        var imageurl = "/resource/images/serv-ico1.png";
+                                        var imageurl = "/resource/images/noPic.jpeg";
                                     }
                                     result +=   '<div class="col-lg-4">'
                                         +'<div class="thumbnail">'

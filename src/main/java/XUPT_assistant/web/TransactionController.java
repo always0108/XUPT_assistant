@@ -84,7 +84,11 @@ public class TransactionController {
     @ResponseBody
     public List<Transaction> getMyTransaction(HttpServletRequest request,Page page){
         User user = (User)request.getSession().getAttribute("user");
-        return transactionService.getMyTransaction(user.getId(),page);
+        List<Transaction> transactions = transactionService.getMyTransaction(user.getId(),page);
+        for(Transaction transaction:transactions){
+            transaction.setPics(pictureService.getPictureByTargetId(transaction.getId(),0));
+        }
+        return transactions;
     }
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)

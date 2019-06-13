@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>我的物品</title>
+    <title>西邮管家 - 我的物品</title>
     <%@include file="public/resource.jsp"%>
     <link type="text/css" rel="stylesheet" href="/resource/lib/bootstrap-fileinput/css/fileinput.css" />
 </head>
@@ -184,14 +184,11 @@
 <%@include file="public/foot.jsp"%>
 <%@include file="public/js.jsp"%>
 
-<script src="../../resource/dropload.min.js"></script>
-<script src="../../resource/zepto.min.js"></script>
-<script src="/resource/lib/bootstrap/js/popper.js"></script>
-<script type="text/javascript" src="/resource/lib/bootstrap-fileinput/js/fileinput.js"></script>
-<script type="text/javascript" src="/resource/lib/bootstrap-fileinput/js/locales/zh.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<script src="../../resource/js/dropload.min.js"></script>
+<script src="../../resource/js/zepto.min.js"></script>
+<script src="../../resource/lib/bootstrap/js/popper.js"></script>
+<script src="../../resource/lib/bootstrap-fileinput/js/fileinput.js"></script>
+<script src="../../resource/lib/bootstrap-fileinput/js/locales/zh.js"></script>
 
 <script>
     var pics = new Array(); //多图上传返回的图片属性接受数组
@@ -312,13 +309,15 @@
                             var arrLen = data.length;
                             if(arrLen > 0){
                                 for(var i=0; i<arrLen; i++){
-                                    var pics = data[i].pics;
-                                    if(pics.length > 0)
-                                        alert(pics[0])
+                                    if(data[i].pics.length > 0){
+                                        var imageurl = "/image/getImage?id="+data[i].pics[0];
+                                    }else {
+                                        var imageurl = "/resource/images/noPic.jpeg";
+                                    }
                                     result +=
                                             '<div class="col-lg-4">'
                                             +'<div class="thumbnail">'
-                                            // +'<img src="/image/getImage?id=2" style="width:300px;height:275px ;" alt="商品">'
+                                            +'<img src=\"'+imageurl+'\" alt="商品" style="width: 300px;height:225px ">'
                                             +'<div class="caption" >'
                                             +'<h3>'+data[i].name+'</h3>'
                                             +'<div style="text-align: left">'

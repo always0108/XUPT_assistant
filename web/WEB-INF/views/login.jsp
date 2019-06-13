@@ -15,22 +15,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>登录</title>
-    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
-    <meta name="author" content="Vincent Garreau">
+    <title>西邮管家 - 登录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" media="screen" href="../../resource/login/css/style.css">
     <link rel="stylesheet" type="text/css" href="../../resource/login/css/reset.css">
-    <script src="../../resource/login/js/particles.min.js"></script>
-    <script src="../../resource/login/js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="../../resource/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../resource/easyui/themes/icon.css">
+
+    <script src="../../resource/login/js/particles.min.js"></script>
+    <script src="../../resource/login/js/app.js"></script>
     <script src="../../resource/easyui/jquery.min.js"></script>
     <script src="../../resource/easyui/jquery.easyui.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
 <body style="height: 100%; background: #fff url(../../resource/images/1.jpg) 50% 50% no-repeat; background-size: cover;">
 <div >
     <div class="login" style="display: block;height: 450px;" >
@@ -56,7 +53,7 @@
             <div class="login-center-input">
                 <input type="text" style="width: 50%" name="cpacha" id="cpacha" value="" placeholder="请输入验证码" onfocus="this.placeholder=&#39;&#39;" onblur="this.placeholder=&#39;请输入验证码&#39;">
                 <div class="login-center-input-text">验证码</div>
-                <img id="cpacha_img" title="点击切换验证码" style="cursor: pointer;" src="get_cpacha?vl=4&wd=110&ht=30&type=loginCpacha" width="110px" height="30px" onclick="change()">
+                <img id="cpacha_img" title="点击切换验证码" style="cursor: pointer;" src="/system/get_cpacha?vl=4&wd=110&ht=30&type=loginCpacha" width="110px" height="30px" onclick="change()">
             </div>
         </div>
         <div class="login-button" id="loginButton">

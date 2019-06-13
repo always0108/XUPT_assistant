@@ -1,24 +1,14 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>注册</title>
+    <title>西邮管家 - 注册</title>
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" media="screen" href="../../resource/login/css/style.css">
     <link rel="stylesheet" type="text/css" href="../../resource/login/css/reset.css">
-    <script src="../../resource/login/js/particles.min.js"></script>
-    <script src="../../resource/login/js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="../../resource/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../resource/easyui/themes/icon.css">
-    <script src="../../resource/easyui/jquery.min.js"></script>
-    <script src="../../resource/easyui/jquery.easyui.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
 <body style="height: 100%; background: #fff url(../../resource/images/1.jpg) 50% 50% no-repeat; background-size: cover;">
 
 <div >
@@ -58,7 +48,12 @@
     <canvas class="particles-js-canvas-el" width="1147" height="952" style="width: 100%; height: 100%;"></canvas></div>
 
 <!-- scripts -->
-
+<script src="../../resource/login/js/particles.min.js"></script>
+<script src="../../resource/login/js/app.js"></script>
+<script src="../../resource/easyui/jquery.min.js"></script>
+<script src="../../resource/easyui/jquery.easyui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <script type="text/javascript">
     function hasClass(elem, cls) {
         cls = cls || '';

@@ -8,11 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>修改密码</title>
+    <title>西邮管家 - 修改密码</title>
     <%@include file="public/resource.jsp"%>
 </head>
 <body>
-    <%@include file="public/js.jsp"%>
     <%@include file="public/head.jsp"%>
     <script>
         $(function () {
@@ -77,8 +76,6 @@
 
     <%@include file="public/foot.jsp"%>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <%@include file="public/js.jsp"%>
 </body>
 </html>

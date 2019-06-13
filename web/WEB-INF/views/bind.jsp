@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>绑定</title>
+    <title>西邮管家 - 绑定</title>
     <%@include file="public/resource.jsp"%>
 </head>
 <body>
@@ -13,19 +13,27 @@
     <div class="col-lg-6 col-lg-offset-3  col-xs-12">
         <c:if test="${status == 0}">
             <form style="margin-top: 50px">
+                <h4>绑定学号后可以查课表、成绩哦！</h4>
+
                 <div class="form-group">
-                    <label for="status">状态</label>
-                    <input type="text" class="form-control" id="status" name="status" readonly value="未绑定">
+                    <div class="input-group">
+                        <span class="input-group-addon" >状态</span>
+                        <input type="text" class="form-control" id="status" name="status" readonly value="未绑定">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="number">学号</label>
-                    <input type="text" class="form-control" id="number" name="number" placeholder="学号">
+                    <div class="input-group">
+                        <span class="input-group-addon" >学号</span>
+                        <input type="text" class="form-control" id="number" name="number" placeholder="学号">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">教务系统密码</label>
-                    <input type="password" class="form-control" id = "password" name="password" placeholder="密码">
+                    <div class="input-group">
+                        <span class="input-group-addon" >密码</span>
+                        <input type="password" class="form-control" id = "password" name="password" placeholder="教务系统密码">
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -113,9 +121,6 @@
 
 <%@include file="public/js.jsp"%>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
 <script type="text/javascript">
     $(function(){
         $("#unbind").click(function () {
@@ -181,6 +186,5 @@
         })
     })
 </script>
-
 </body>
 </html>

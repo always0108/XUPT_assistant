@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>课表查询</title>
+    <title>西邮管家 - 课表查询</title>
     <%@include file="public/resource.jsp"%>
 </head>
 <body>
@@ -17,9 +17,10 @@
 
         <div class="container main">
             <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-                <form method="POST" action="/student/courseSearch">
+                <form id="searchForm" method="POST" action="/student/courseSearch">
                     <div class="form-group">
-                        <select class="form-control" name="year">
+                        <select class="form-control" name="year" id="selectYear">
+                            <option value="0">请选择学年</option>
                             <option value="2018">2018-2019</option>
                             <option value="2017">2017-2018</option>
                             <option value="2016">2016-2017</option>
@@ -28,17 +29,20 @@
                     </div>
 
                     <div class="form-group">
-                        <select class="form-control" name="semester">
+                        <select class="form-control" name="semester" id="selectSemester">
+                            <option value="0">请选择学期</option>
                             <option value="1">第一学期</option>
                             <option value="2">第二学期</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="form-control btn btn-primary">查询</button>
+                        <button type="button" id="search" class="form-control btn btn-primary">查询</button>
                     </div>
-
                 </form>
+
+                <input type="hidden" id="year" value="${year}">
+                <input type="hidden" id="semester" value="${semester}">
 
                 <c:if test="${courses != null}">
                     <div class="form-group">
@@ -70,6 +74,42 @@
     <%@include file="public/foot.jsp"%>
 
     <%@include file="public/js.jsp"%>
+
+    <script type="application/javascript">
+        $(document).ready(function(){
+            var year = $("#year").val();
+            var semester = $("#semester").val();
+            $("#selectYear").each(function (value) {
+                $(this).children("option").each(function(){
+                    if ($(this).val() == year){
+                         $(this).attr("selected","selected");
+                    }
+                })
+            })
+
+            $("#selectSemester").each(function (value) {
+                $(this).children("option").each(function(){
+                    if ($(this).val() == semester){
+                        $(this).attr("selected","selected");
+                    }
+                })
+            })
+
+            $("#search").click(function () {
+                $('select').each(function() {
+                    if($(this).children("option:selected").val() == 0){
+                        Swal.fire({
+                            type: 'error',
+                            title: '请选择',
+                            width:300
+                        })
+                        return false;
+                    }
+                });
+                $("#searchForm").submit();
+            })
+        });
+    </script>
 
 </body>
 </html>

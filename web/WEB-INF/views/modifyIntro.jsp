@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: limeng
@@ -6,10 +5,11 @@
   Time: 上午8:33
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>修改个人信息</title>
+    <title>西邮管家 - 修改个人信息</title>
     <%@include file="public/resource.jsp"%>
 </head>
 <body>
@@ -75,10 +75,6 @@
     </div>
 
     <%@include file="public/foot.jsp"%>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
     <script type="text/javascript">
         $(function () {
