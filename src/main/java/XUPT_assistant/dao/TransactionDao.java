@@ -1,10 +1,8 @@
 package XUPT_assistant.dao;
 
+import XUPT_assistant.model.Page;
 import XUPT_assistant.model.Transaction;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,15 +20,15 @@ public interface TransactionDao {
     void deleteTransaction(int id);
 
     //修改物品交易
-    @Update("update transaction set name = #{name},price = #{price} , information = #{information} ," +
-            "phone = #{phone},status = #{status} where id = #{id}")
+    @Update("update transaction set id = #{id},user_id = #{user_id},name = #{name},price = #{price} , information = #{information} ," +
+            "phone = #{phone},seller = #{seller},status = #{status} where id = #{id}")
     void updateTransaction(Transaction transaction);
 
     //查询所有物品交易信息
-    @Select("select * from transaction where status = 0")
-    List<Transaction> getAllTransaction();
+    @Select("select * from transaction where status = 0 limit #{start} , #{pageSize}")
+    List<Transaction> getAllTransaction(Page page);
 
     //查询个人物品交易信息
-    @Select("select * from transaction where user_id = #{user_id}")
-    List<Transaction> getMyTransaction(int user_id);
+    @Select("select * from transaction where user_id = #{user_id} limit #{start} , #{pageSize}")
+    List<Transaction> getMyTransaction(@Param("user_id") int user_id,@Param("start")int start,@Param("pageSize")int pageSize);
 }

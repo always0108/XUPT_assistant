@@ -37,7 +37,14 @@
                             <li><a href="/student/gradeSearch">成绩查询</a>
 
                         </ul>
-                    <li><a href="/system/transaction">跳蚤市场</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            跳蚤市场 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/system/transaction">二手市场</a></li>
+                            <li><a href="/system/MyTransaction">我的物品</a></li>
+                        </ul>
                     <li><a href="#">失物招领</a>
                     <li><a href="#">校园说说</a>
                     <li><a href="#">关于我们</a>

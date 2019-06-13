@@ -1,6 +1,7 @@
 package XUPT_assistant.web;
 
 
+import XUPT_assistant.model.Page;
 import XUPT_assistant.model.User;
 import XUPT_assistant.service.TransactionService;
 import XUPT_assistant.service.UserService;
@@ -160,10 +161,17 @@ public class SystemController {
     }
 
     @RequestMapping(value = "/transaction",method = RequestMethod.GET)
-    public String personal(Model model){
-        model.addAttribute("transactions",transactionService.getAllTransaction());
+    public String personal(Model model, Page page){
+        model.addAttribute("transactions",transactionService.getAllTransaction(page));
         return "transaction";
     }
+
+    @RequestMapping(value = "/MyTransaction",method = RequestMethod.GET)
+    public String My(){
+        return "MyTransaction";
+    }
+
+
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody

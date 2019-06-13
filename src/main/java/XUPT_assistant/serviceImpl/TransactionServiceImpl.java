@@ -1,6 +1,7 @@
 package XUPT_assistant.serviceImpl;
 
 import XUPT_assistant.dao.TransactionDao;
+import XUPT_assistant.model.Page;
 import XUPT_assistant.model.Transaction;
 import XUPT_assistant.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,12 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getAllTransaction(){
-        return transactionDao.getAllTransaction();
+    public List<Transaction> getAllTransaction(Page page){
+        return transactionDao.getAllTransaction(page);
     }
 
     @Override
-    public List<Transaction> getMyTransaction(int user_id){
-        return transactionDao.getMyTransaction(user_id);
+    public List<Transaction> getMyTransaction(int user_id,Page page){
+        return transactionDao.getMyTransaction(user_id,page.getStart(),page.getPageSize());
     }
 }
