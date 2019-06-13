@@ -26,7 +26,6 @@
                 <p>XUPT secondary market</p>
             </div>
         </div>
-        <!-- row -->
     </div>
 
     <div class="centered" id="1">
@@ -44,7 +43,7 @@
     $(function(){
         // 页数
         var currentPage = 0;
-        // 每页展示5个
+        // 每页展示3个
         var pageSize = 3;
 
         // dropload
@@ -62,16 +61,21 @@
                             var arrLen = data.length;
                             if(arrLen > 0){
                                 for(var i=0; i<arrLen; i++){
+                                    if(data[i].pics.length > 0){
+                                        var imageurl = "/image/getImage?id="+data[i].pics[0];
+                                    }else {
+                                        var imageurl = "/resource/images/serv-ico1.png";
+                                    }
                                     result +=   '<div class="col-lg-4">'
                                         +'<div class="thumbnail">'
-                                        +'<img src="img/12356.jpg" alt="商品">'
+                                        +'<img src=\"'+imageurl+'\" alt="商品" style="width: 300px;height:225px ">'
                                         +'<div class="caption" >'
                                         +'<h3>'+data[i].name+'</h3>'
                                         +'<div style="text-align: left">'
-                                        +'<h5>价格：'+data[i].price+'</h5>'
+                                        +'<h5>价&emsp;&emsp;格：'+data[i].price+'</h5>'
                                         +'<h5>卖家姓名：'+data[i].seller+'</h5>'
                                         +'<h5>联系方式：'+data[i].phone+'</h5>'
-                                        +'<p>简介：'+data[i].information+'</p>'
+                                        +'<h5>简&emsp;&emsp;介：'+data[i].information+'</h5>'
                                         +'</div>'
                                         +'</div>'
                                         +'</div>'

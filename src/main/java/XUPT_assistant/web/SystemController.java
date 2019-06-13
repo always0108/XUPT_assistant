@@ -55,7 +55,8 @@ public class SystemController {
     }
 
     @RequestMapping(value = "/modifyInfo",method = RequestMethod.GET)
-    public String modifyInfo(){
+    public String modifyInfo(Model model,HttpServletRequest request){
+        model.addAttribute("user",(User)request.getSession().getAttribute("user"));
         return "modifyIntro";
     }
 
@@ -192,8 +193,6 @@ public class SystemController {
         model.addAttribute("talks",secretService.getMySecrets(user.getName()));
         return "MyTalk";
     }
-
-
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody

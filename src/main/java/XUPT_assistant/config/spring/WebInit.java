@@ -26,7 +26,7 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration){
         registration.setMultipartConfig(new MultipartConfigElement
-                ("/home/huxudong/upload",1024 * 1024 * 8,
+                ("/home/limeng/upload",1024 * 1024 * 8,
                         1024 * 1024 * 100,1024 * 1024 * 8));
     }
 }
