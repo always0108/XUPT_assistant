@@ -1,6 +1,9 @@
 package XUPT_assistant.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Transaction {
     private Integer id;
 
@@ -17,6 +20,8 @@ public class Transaction {
     private String phone;
 
     private Integer status;
+
+    private List<Integer> pics = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -82,5 +87,11 @@ public class Transaction {
         this.status = status;
     }
 
+    public List<Integer> getPics() {
+        return pics;
+    }
 
+    public void setPics(List<Integer> pics) {
+        this.pics = pics;
+    }
 }

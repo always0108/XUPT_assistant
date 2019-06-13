@@ -6,6 +6,8 @@ import XUPT_assistant.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PictureServiceImpl implements PictureService {
     @Autowired
@@ -34,5 +36,10 @@ public class PictureServiceImpl implements PictureService {
     //更新图片信息
     public void updatePicture(Integer target_id ,Integer type,Integer id){
         pictureDAO.updatePicture(target_id,type,id);
+    }
+
+    //根据交易id和type获取图片
+    public List<Integer> getPictureByTargetId(Integer target_id, Integer type){
+        return pictureDAO.getPictureByTargetId(target_id,type);
     }
 }

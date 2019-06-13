@@ -1,7 +1,9 @@
 package XUPT_assistant.web;
 
 
+import XUPT_assistant.model.Page;
 import XUPT_assistant.model.User;
+import XUPT_assistant.service.SecretService;
 import XUPT_assistant.service.TransactionService;
 import XUPT_assistant.service.UserService;
 import XUPT_assistant.utils.CpachaUtil;
@@ -27,6 +29,9 @@ public class SystemController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private SecretService secretService;
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(HttpServletRequest request){
@@ -165,10 +170,30 @@ public class SystemController {
     }
 
     @RequestMapping(value = "/transaction",method = RequestMethod.GET)
-    public String personal(Model model){
-        model.addAttribute("transactions",transactionService.getAllTransaction());
+    public String personal(Model model, Page page){
+        model.addAttribute("transactions",transactionService.getAllTransaction(page));
         return "transaction";
     }
+
+    @RequestMapping(value = "/MyTransaction",method = RequestMethod.GET)
+    public String My(){
+        return "MyTransaction";
+    }
+
+    @RequestMapping(value = "/SchoolTalk",method = RequestMethod.GET)
+    public String SchoolTalk(Model model){
+        model.addAttribute("talks",secretService.getAllSecrets());
+        return "SchoolTalk";
+    }
+
+    @RequestMapping(value = "/MyTalk",method = RequestMethod.GET)
+    public String MyTalk(Model model,HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        model.addAttribute("talks",secretService.getMySecrets(user.getName()));
+        return "MyTalk";
+    }
+
+
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody

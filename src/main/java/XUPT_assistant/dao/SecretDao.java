@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface SecretDao {
-    @Insert("insert into secret(id,username,content,time) values(null,#{username},#{content},#{time})")
+    @Insert("insert into secret(user_id,username,content,time) values(#{user_id},#{username},#{content},#{time})")
     void addSecret(Secret secret);
 
     @Select("select * from secret")
