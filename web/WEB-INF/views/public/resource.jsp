@@ -18,7 +18,7 @@
     <!-- Bootstrap CSS File -->
     <link href="/resource/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Libraries CSS Files -->
+    <!-- Libraries CSS Picture -->
     <link href="/resource/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/resource/css/style.css">
 </html>
