@@ -13,6 +13,37 @@
 </head>
 <body>
     <%@include file="public/head.jsp"%>
+
+
+    <div class="container main">
+        <div class="col-lg-6 col-xs-12 col-lg-offset-3">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="form-group">
+                        <label>旧密码</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>新密码</label>
+                        <input type="password" name="newPassword" id="newPassword" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>重复新密码</label>
+                        <input type="password" name="newRePassword" id="newRePassword" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" id="button" class="btn btn-primary form-control">确认</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+
+    <%@include file="public/foot.jsp"%>
+
+    <%@include file="public/js.jsp"%>
+
     <script>
         $(function () {
             $("#button").click(function () {
@@ -48,34 +79,5 @@
             })
         })
     </script>
-
-    <div class="container main">
-        <div class="col-lg-6 col-xs-12 col-lg-offset-3">
-                <form class="bs-example bs-example-form" role="form">
-                    <div class="form-group">
-                        <label>旧密码</label>
-                        <input type="text" name="password" id="password" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label>新密码</label>
-                        <input type="text" name="newPassword" id="newPassword" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label>重复新密码</label>
-                        <input type="text" name="newRePassword" id="newRePassword" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <button type="button" id="button" class="btn btn-primary form-control">确认</button>
-                    </div>
-                </form>
-        </div>
-    </div>
-
-    <%@include file="public/foot.jsp"%>
-
-    <%@include file="public/js.jsp"%>
 </body>
 </html>

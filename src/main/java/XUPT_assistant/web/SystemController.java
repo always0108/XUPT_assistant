@@ -216,7 +216,10 @@ public class SystemController {
 
     @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
     @ResponseBody
-    public String updatePassword(String password,String newPassword,String newRePassword,HttpServletRequest request) {
+    public String updatePassword(@RequestParam("password") String password,
+                                 @RequestParam("newPassword") String newPassword,
+                                 @RequestParam("newRePassword") String newRePassword,
+                                 HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (!user.getPassword().equals(password)) {
             return "原密码错误";
